@@ -26,7 +26,7 @@ metaInfo() {
     ...this.$ogp({
       title: 'your-title',
       description: 'your-description',
-      image: 'your-image-url'
+      image: 'your-image-url',
       appId: 'someFacebookAppID' // Facebook-only
     })
   }
