@@ -4,7 +4,7 @@ Adding OGP meta tags to every page can be a pain. This plugin aims to alleviate
 that pain. Add the plugin to your project like so.
 
 ```sh
-npm i gridsome-plugin-ogp
+npm i colus/gridsome-plugin-ogp#feat/enable-ovrwrite
 ```
 
 Add `.env` file to your project root. like this...
@@ -35,12 +35,12 @@ Then, in App.vue or Default.vue file, set default value.
 
 ```javascript
 <static-query>
-	query {
-		metadata {
-			siteName
-			siteDescription
-		}
-	}
+  query {
+    metadata {
+      siteName
+      siteDescription
+    }
+  }
 </static-query>
 
 <script>
