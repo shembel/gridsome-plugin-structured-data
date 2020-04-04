@@ -1,3 +1,5 @@
 node_modules
 .DS_Store
 tags
+package-lock.json
+*.code-workspace

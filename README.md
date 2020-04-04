@@ -1,77 +1,79 @@
-# gridsome-plugin-ogp
+# gridsome-plugin-structured-data
 
-Adding OGP meta tags to every page can be a pain. This plugin aims to alleviate
-that pain. Add the plugin to your project like so.
+A Gridsome plugin to add structured data (microdata), ogp and twittercard tags.
+It also sets the standard title and description tag at the same time.
+
+This is a fork of [brandonpittman/gridsome-plugin-ogp](https://github.com/brandonpittman/gridsome-plugin-ogp).
+
+## Install
 
 ```sh
-npm i gridsome-plugin-ogp
+$ npm i colus-img/gridsome-plugin-structured-data
 ```
 
-Add `.env` file to your project root. like this...
+## Usage
 
-```
-GRIDSOME_BASE_PATH=https://example.com
-GRIDSOME_SITE_NAME=your-site-name
-GRIDSOME_TITLE_DELIMITER=|
-```
-
-In `gridsome.config.js`...
+Add in your `gridsome.config.js` like this:
 
 ```javascript
+
+const siteName = 'your site`s name'
+const baseUrl = 'https://example.com'
+const titleDelimiter = '|'
+const siteDescription = 'some descriptions of your site'
+
 module.exports = {
-  siteName: process.env.GRIDSOME_SITE_NAME,
-  siteUrl: process.env.GRIDSOME_BASE_PATH,
-  titleTemplate: '%s ' + process.env.GRIDSOME_TITLE_DELIMITER + ' ' + process.env.GRIDSOME_SITE_NAME,
-  siteDescription: 'your-description',
-  plugins: [
-    {
-      use: 'gridsome-plugin-ogp'
-    }
-  ]
-}
-```
-
-Then, in App.vue or Default.vue file, set default value.
-
-```javascript
-<static-query>
-	query {
-		metadata {
-			siteName
-			siteDescription
+	siteName: siteName,
+	siteUrl: baseUrl,
+	titleTemplate: '%s',
+	siteDescription: siteDescription,
+	plugins: [
+		{
+			use: 'gridsome-plugin-structured-data',
+			options: {
+				siteName: siteName,
+				shortDiscription: 'websiteDesign and bookDesign', //in top page title is 'siteName' - 'shortDiscription'
+				baseUrl: baseUrl,
+				delimiter: titleDelimiter,
+				description: siteDescription,
+				published: '2020-04-01T00:00:00+09:00', //Published date/time of your site in ISO8601 format
+				imagePath: '/path/to/ogp-image', //Default ogp image.
+				logoPath: '/path/to/logo-image', //Raster image. Don't use svg.
+				appId: '000000000000000', //option, facebook app id
+				twcard: 'summary_large_image', //option, one of summary, summary_large_image, app, or player.
+				twsite: '@siteAcount', //option, @name for your website.
+				twcreator: '@creatorAcount' //option, @name for the content creator.
+			}
 		}
-	}
-</static-query>
-
-<script>
-metaInfo() {
-  return {
-    ...this.$ogp({
-      title: this.$static.metadata.siteName,
-      description: this.$static.metadata.siteDescription,
-      image: '/your-image-path/image-name-1.jpg',
-      appId: 'someFacebookAppID',
-      twcard: 'summary_large_image',
-      ogtype: 'article'
-    })
-  }
+	]
 }
-</script>
 ```
 
-Then, in any page or template component you have, adjust the `metaInfo` hook
-like so.
+Then, in Index.vue file, adjust the metaInfo hook like this:
 
 ```javascript
 metaInfo() {
-  return {
-    ...this.$ogp({
-      title: 'your-title',
-      image: '/your-image-path/image-name-2.jpg',
-    })
-  }
+	return {
+		...this.$sd({
+			ogtype: 'website' //article or website. Default is article
+		})
+	}
 }
 ```
 
-This will then populate the meta tags needed for Facebook, Google, and Twitter.
-It will also set the standard page title and description at the same time.
+Then, in any page or template component you have, adjust the metaInfo hook
+like this:
+
+```javascript
+metaInfo() {
+	return {
+		...this.$sd({
+			title: 'page-title',
+			description: 'some descriptions of the page',
+			image: '/path/to/page-image', //option, If not, the default ogp image will be used 
+			published: '2020-04-01T00:00:00+09:00', //Published date/time of the page in ISO8601 format
+			modified: '2020-04-02T00:00:00+09:00', //option, Modified date/time of the page in ISO8601 format. 'now' is keyword to set date.now for such as list page. 
+		})
+	}
+}
+```

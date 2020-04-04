@@ -1,25 +1,23 @@
 {
-  "name": "gridsome-plugin-ogp",
-  "version": "0.0.14",
+  "name": "gridsome-plugin-structured-data",
+  "version": "0.0.1",
   "main": "gridsome.client.js",
   "keywords": [
     "gridsome",
+    "structured-data",
     "ogp",
-    "open graph",
     "seo"
   ],
-  "author": "Brandon Pittman",
+  "author": "colus-img",
+  "contributor": "Brandon Pittman",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brandonpittman/gridsome-plugin-ogp.git"
+    "url": "git+https://github.com/colus-img/gridsome-plugin-structured-data.git"
   },
   "bugs": {
-    "url": "https://github.com/brandonpittman/gridsome-plugin-ogp/issues"
+    "url": "https://github.com/colus-img/gridsome-plugin-structured-data/issues"
   },
-  "homepage": "https://github.com/brandonpittman/gridsome-plugin-ogp#readme",
-  "description": "A Gridsome plugin to make adding OGP meta tags easier.",
-  "devDependencies": {
-    "xo": "^0.28.0"
-  }
+  "homepage": "https://github.com/colus-img/gridsome-plugin-structured-data#readme",
+  "description": "A Gridsome plugin to add structured data, ogp and twittercard tags."
 }
