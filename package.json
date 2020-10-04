@@ -8,16 +8,16 @@
     "ogp",
     "seo"
   ],
-  "author": "colus-img",
-  "contributor": "Brandon Pittman",
+  "author": "shembel",
+  "contributor": "Nikita Shembel",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/colus-img/gridsome-plugin-structured-data.git"
+    "url": "git+https://github.com/shembel/gridsome-plugin-structured-data.git"
   },
   "bugs": {
-    "url": "https://github.com/colus-img/gridsome-plugin-structured-data/issues"
+    "url": "https://github.com/shembel/gridsome-plugin-structured-data/issues"
   },
-  "homepage": "https://github.com/colus-img/gridsome-plugin-structured-data#readme",
+  "homepage": "https://github.com/shembel/gridsome-plugin-structured-data#readme",
   "description": "A Gridsome plugin to add structured data, ogp and twittercard tags."
 }
